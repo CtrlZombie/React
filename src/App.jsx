@@ -16,6 +16,6 @@ function App() {
       <UserCard name = 'Михаил' age = {5}/>
     </div>
   )
-}
+};
 
 export default App;
