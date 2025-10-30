@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { useAuth } from './Context/AuthContext.js';
 
 function App() {
+  const { isLoggedIn, login } = useAuth();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Мое приложение</h1>
+      
+      {isLoggedIn ? (
+        <div>
+          <h2>Вы авторизованы! ✅</h2>
+          <p>Добро пожаловать в приложение!</p>
+        </div>
+      ) : (
+        <div>
+          <h2>Вы не авторизованы</h2>
+          <button onClick={login} style={{padding: '10px 20px', fontSize: '16px'}}>
+            Войти
+          </button>
+        </div>
+      )}
     </div>
   );
 }
